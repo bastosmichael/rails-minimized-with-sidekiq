@@ -6,6 +6,8 @@ source 'https://rubygems.org'
 gem "actionpack", "~> 4.1.2"
 gem "railties",   "~> 4.1.2"
 gem "tzinfo"
+gem "sidekiq"
+gem "sinatra", require: false
 
 # Let's use thin
 gem "thin"

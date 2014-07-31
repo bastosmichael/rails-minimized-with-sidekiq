@@ -24,9 +24,12 @@
 # file and without the comments.
 require "rails"
 require "rails/all"
+require 'sidekiq/web'
  
 class MyApp < Rails::Application
   routes.append do
+    root :to => redirect('/sidekiq')
+    mount Sidekiq::Web, at: '/sidekiq'
     get "/hello/world", to: "hello#world"
   end
  
