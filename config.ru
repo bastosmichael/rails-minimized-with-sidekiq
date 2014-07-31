@@ -27,11 +27,12 @@ require "rails/all"
  
 class MyApp < Rails::Application
   routes.append do
-    match "/hello/world" => "hello#world"
+    get "/hello/world", to: "hello#world"
   end
  
   # Enable cache classes. Production style.
   config.cache_classes = true
+  config.eager_load = false
  
   # Here you could remove some middlewares, for example
   # Rack::Lock, AD::Flash and AD::BestStandardsSupport below.
@@ -48,8 +49,7 @@ end
  
 # This is a barebone controller. One good reference can be found here:
 # http://piotrsarnacki.com/2010/12/12/lightweight-controllers-with-rails3/
-class HelloController < ActionController::Metal
-  include ActionController::Rendering
+class HelloController < ActionController::Base
  
   def world
     render :text => "Hello world!"
