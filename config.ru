@@ -33,6 +33,9 @@ class MyApp < Rails::Application
     get "/hello/world", to: "hello#world"
   end
  
+  # Load Sidekiq Workers
+  config.autoload_paths += Dir[Rails.root.join('workers', '{**}')]
+
   # Enable cache classes. Production style.
   config.cache_classes = true
   config.eager_load = false
